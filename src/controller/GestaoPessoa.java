@@ -5,7 +5,7 @@ import model.Pessoa;
 
 public class GestaoPessoa {
 
-	Database db;
+	static Database db;
 	
 	public GestaoPessoa(){
 		db = new Database();

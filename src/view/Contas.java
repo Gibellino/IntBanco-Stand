@@ -8,6 +8,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import bd.Database;
 import controller.GestaoConta;
 
 import javax.swing.JTextField;
@@ -38,12 +39,16 @@ public class Contas {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
+	
+	Database db;
+	
 	public Contas() {
 		initialize();
+		db = new Database();
 	}
 
 	/**
@@ -76,9 +81,18 @@ public class Contas {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(!txtConta.getText().isEmpty() || !txtPass.getText().isEmpty()){
+					
 					new GestaoConta().addC(txtConta.getText(), txtPass.getText());
-					JOptionPane.showMessageDialog(null, "Conta Criada para " + txtConta.getText() + " !");
+					
+					JOptionPane.showMessageDialog(null, "Conta Criada para " + txtConta.getText() + " ! " + db.contas.size());
 					contas.dispose();
+					if(db.contas.size() > 0){
+						System.out.println("com contas! 2");
+					}
+					
+					else{
+						System.out.println("Sem contas!2");
+					}
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Obrigatório preencher todos os campos!");

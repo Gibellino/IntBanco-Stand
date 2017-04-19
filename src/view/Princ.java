@@ -8,15 +8,19 @@ import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import model.*;
+
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Princ {
 
-	public JFrame princ;
+	JFrame princ;
 	private final Action action = new SwingAction();
 
 	/**
@@ -38,7 +42,7 @@ public class Princ {
 	/**
 	 * Create the application.
 	 */
-	
+
 	public Princ() {
 		initialize();
 	}
@@ -93,6 +97,7 @@ public class Princ {
 		);
 		princ.getContentPane().setLayout(groupLayout);
 	}
+	
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "SwingAction");

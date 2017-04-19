@@ -9,6 +9,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import bd.Database;
+import controller.GestaoConta;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -16,7 +20,7 @@ import java.awt.event.MouseEvent;
 
 public class Login {
 
-	private JFrame login;
+	JFrame login;
 	private JTextField logUser;
 	private JTextField logPass;
 
@@ -36,11 +40,16 @@ public class Login {
 		});
 	}
 
+	Database bd;
+	GestaoConta gC;
+	
 	/**
 	 * Create the application.
 	 */
 	public Login() {
 		initialize();
+		bd = new Database();
+		gC = new GestaoConta();
 	}
 
 	/**
@@ -77,9 +86,16 @@ public class Login {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(!logUser.getText().isEmpty() && !logPass.getText().isEmpty()){
-					JOptionPane.showMessageDialog(null, "Bem-Vindo " + logUser.getText() + " !");
-					login.dispose();
-					new TDL().tdl.setVisible(true);
+					if(new GestaoConta().login(logUser.getText(), logPass.getText()) == true){
+						JOptionPane.showMessageDialog(null, "Bem-Vindo " + logUser.getText() + " !");
+						login.dispose();
+						new Atm().atm.dispose();
+						new TDL().tdl.setVisible(true);
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Credênciais erradas!");
+						login.dispose();
+					}
 				}
 				else{
 					

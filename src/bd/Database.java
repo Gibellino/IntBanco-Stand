@@ -7,8 +7,8 @@ import model.Pessoa;
 
 public class Database {
 
-	public ArrayList<Conta> contas;
-	public ArrayList<Pessoa> pessoas;
+	public static ArrayList<Conta> contas;
+	public static ArrayList<Pessoa> pessoas;
 
 	public Database(){
 		contas = new ArrayList<>();

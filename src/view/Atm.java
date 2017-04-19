@@ -35,6 +35,7 @@ public class Atm {
 	/**
 	 * Create the application.
 	 */
+	
 	public Atm() {
 		initialize();
 	}
@@ -57,6 +58,12 @@ public class Atm {
 		});
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new Login().login.setVisible(true);
+			}
+		});
 		
 		JButton btnNewButton_1 = new JButton("Sair");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
